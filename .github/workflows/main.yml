@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: Mitt-test-resultat
-        path: /home/runner/work/workflow/workflow/TestProject1/TestResults
+        path: /home/runner/work/CheckersGame/CheckersGame/CheckerTestProject/TestResults/TestResults.tr
         
   approve:  
     needs: build
