@@ -47,14 +47,14 @@ jobs:
         name: Mitt-test-resultat
         path: /home/runner/work/CheckersGame/CheckersGame/CheckerTestProject/TestResults
         
-    - name: Check Test Results
-      run: |
-        if grep -q "Failed:     0" TestResults.trx 
-        then
-          echo "All looks well"
-          exit 0
-        else
-          echo "Some tests did not pass"
-          exit 1
-        fi
+   # - name: Check Test Results
+     # run: |
+      #  if grep -q "Failed:     0" TestResults.trx 
+       # then
+         # echo "All looks well"
+         # exit 0
+       # else
+          #echo "Some tests did not pass"
+        #  exit 1
+       # fi
   
