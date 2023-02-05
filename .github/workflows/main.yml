@@ -49,7 +49,7 @@ jobs:
         
     - name: Check Test Results
       run: |
-        if grep -q "Failed:=0" TestResults.trx 
+        if grep -q "Failed:     0" TestResults.trx 
         then
           echo "All looks well"
           exit 0
