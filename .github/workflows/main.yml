@@ -1,0 +1,60 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: TestTrigger
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Gör vår checkout
+      uses: actions/checkout@v3
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: 6.0.x
+    - name: Restore dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build --no-restore
+    - name: Test
+      run: dotnet test --no-build --verbosity normal --logger "trx;LogFileName=TestResults.trx"
+    - name: Store test results  
+      uses: actions/upload-artifact@v3.1.2
+      with:
+        name: Mitt-test-resultat
+        path: /home/runner/work/workflow/workflow/TestProject1/TestResults
+        
+  approve:  
+    needs: build
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Gör vår checkout
+      uses: actions/checkout@v3
+      
+    - name: Download a Build Artifact
+      uses: actions/download-artifact@v3.0.2
+      with:
+        name: Mitt-test-resultat
+        path: /home/runner/work/workflow/workflow/TestProject1/TestResults
+        
+    - name: Check Test Results
+      run: |
+        if grep -q "Passed:=10" TestResults.trx 
+        then
+          echo "All looks well"
+          exit 0
+        else
+          echo "Some tests did not pass"
+          exit 1
+        fi
+  
