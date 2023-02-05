@@ -1,0 +1,63 @@
+
+.cell{
+    height: 80px;
+    width: 80px;
+    padding: 10px;
+    border: 1px solid black;
+}
+.cell.active{
+    border: 3px solid black;
+}
+.row:nth-child(2n) .cell:nth-child(2n+1) {
+    background: #bf7328;
+}
+.row:nth-child(2n) .cell:nth-child(2n) {
+    background: #cfae4b;
+}
+.row:nth-child(2n+1) .cell:nth-child(2n+1) {
+    background: #cfae4b;
+}
+
+.row:nth-child(2n+1) .cell:nth-child(2n) {
+    background: #bf7328;
+}
+.checker {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+    .checker.active {
+        border: 3px solid #14c305;
+    }
+.checker span {
+    text-align: center;
+    margin-top: 18px;
+    display: block;
+}
+.checker.black {
+    background: #000;
+    color: #fff;
+
+}
+    .checker.red {
+        background: #c90000;
+    }
+.checkerScore {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid black;
+}
+.checkerScore.blackScore {
+    background: #000;
+    color: #fff;
+}
+
+    .checkerScore.redScore {
+        background: red;
+        color: #fff
+    }
+h2 {
+    color: #37d12ffa;
+}
